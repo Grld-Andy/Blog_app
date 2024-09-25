@@ -43,24 +43,17 @@ header{
   font-size: 1.3em;
   cursor: pointer;
 }
-
-.tags{
-  display:flex;
-  padding: 5px;
-  margin: 5px 0;
-  overflow-y: scroll;
-  h3{
-    margin: 5px;
-    padding: 5px;
-    font-weight: 400;
+.inputContainer{
+  text-align:center;
+  background-color: blue;
+  padding-bottom: 30px;
+  input{
     border-radius: 5px;
-    font-variant: small-caps;
-    border: 1px solid black;
-    cursor: pointer;
+    padding: 5px;
+    width: min(80%, 400px);
+    border: 1px solid gray;
+    font-size: 1em;
   }
-}
-.tags::-webkit-scrollbar{
-  display: none;
 }
 
 .selectedTag{
@@ -112,6 +105,12 @@ footer{
       h2{
         font-size: 2em;
         font-weight: 500;
+        
+        display: -webkit-box;        
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
       }
       h3, h4{
         font-weight: 400;
