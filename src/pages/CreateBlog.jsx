@@ -29,6 +29,8 @@ const CreateBlog = () => {
     if(!isValid){
       return
     }
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const month = new Date().getMonth()
     const newBlog = {
       id: blogs.length + 1,
       title: title,
@@ -36,7 +38,7 @@ const CreateBlog = () => {
       image: image,
       content: content,
       key: key,
-      date: new Date().getUTCDate
+      date: `${new Date().getDate()} ${months[month - 1]},${new Date().getFullYear()}`
     }
     blogsDispatch({type: "CREATE_BLOG", payload: {...newBlog}})
     navigate("/")

@@ -31,8 +31,6 @@ const EditBlog = () => {
     if(!isValid){
       return
     }
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    const month = new Date().getMonth()
     const editBlog = {
       id: currentBlog.id,
       title: title,
@@ -40,7 +38,7 @@ const EditBlog = () => {
       image: image,
       content: content,
       key: key,
-      date: `${new Date().getDate()} ${months[month - 1]},${new Date().getFullYear()} `
+      date: currentBlog.date
     }
     blogsDispatch({type: "UPDATE_BLOG", payload: {...editBlog}})
     navigate(`/blogs/${currentBlog.id}`)
