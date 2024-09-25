@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router'
 
 const Blogs = () => {
     const [query, setQuery] = useState("")
-    const [filteredBlogs, setFilteredBlogs] = useState([])
     const {blogs} = useContext(BlogContext)
+    const [filteredBlogs, setFilteredBlogs] = useState(blogs)
     const navigate = useNavigate()
 
     const navigateToCreate = () => {
@@ -27,9 +27,9 @@ const Blogs = () => {
   
     return (
         <div>
-            <form className="inputContainer">
+            <div className="inputContainer">
                 <input type='text' onChange={handleQueryChange} value={query} placeholder='Search by title'/>
-            </form>
+            </div>
             <div className='selectedTag'>
                 <h1>Blogs</h1>
                 <Button text="Add +" onClickFunc={navigateToCreate}/>

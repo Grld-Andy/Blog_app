@@ -47,7 +47,7 @@ const EditBlog = () => {
   const deleteBlog = () => {
     const confirmDelete = confirm("Are you sure you want to delete blog?")
     if(confirmDelete)
-      blogsDispatch({type: "DELETE_BLOG", payload: {currentBlog}})
+      blogsDispatch({type: "DELETE_BLOG", payload: {id: currentBlog.id}})
     navigate(`/`)
   }
 

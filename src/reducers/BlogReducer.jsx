@@ -3,7 +3,7 @@ export const BlogReducer = (blogs, action) => {
         case 'CREATE_BLOG':
             return [...blogs, action.payload]
         case 'DELETE_BLOG':
-            return blogs.filter(blog => blog.id === action.payload.id)
+            return blogs.filter(blog => blog.id !== action.payload.id)
         case 'UPDATE_BLOG':
             return blogs.map(blog => {
                 if(blog.id === action.payload.id)
