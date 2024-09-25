@@ -20,23 +20,25 @@ const Blogs = () => {
 
     return (
         <div>
-        <div className='tags'>
-            {
-                tags.map((tag, index) => (
-                <h3 key={index} onClick={() => handleTagClick(index)}>{tag}</h3>
-                ))
-            }
+            <div className='tags'>
+                {
+                    tags.map((tag, index) => (
+                    <h3 key={index} onClick={() => handleTagClick(index)}>{tag}</h3>
+                    ))
+                }
             </div>
             <div className='selectedTag'>
-            <h1>{selectedTag.toUpperCase()}</h1>
-            <Button text="Add +" onClickFunc={navigateToCreate}/>
+                <h1>Blogs</h1>
+                <Button text="Add +" onClickFunc={navigateToCreate}/>
             </div>
             <div className='blogs'>
-            {
-                blogs.map((blog, index) => (
-                <BlogCell key={index} blog={blog}/>
-                ))
-            }
+                {
+                    blogs.length ?
+                    blogs.map((blog, index) => (
+                        <BlogCell key={index} blog={blog}/>
+                    ))
+                    : <h2>No blogs posted</h2>
+                }
             </div>
         </div>
     )
