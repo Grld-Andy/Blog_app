@@ -1,15 +1,17 @@
 import { useContext, useState } from "react"
 import Button from "../components/Button"
 import { BlogContext } from "../context/BlogContext"
-import { useNavigate } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
-const CreateBlog = () => {
+const EditBlog = () => {
   const {blogs, blogsDispatch} = useContext(BlogContext)
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
-  const [image, setImage] = useState("")
-  const [content, setContent] = useState("")
-  const [key, setKey] = useState("")
+  const params = useParams()
+  const currentBlog = blogs.find(blog => blog.id == params.blogId)
+  const [title, setTitle] = useState(currentBlog.title)
+  const [author, setAuthor] = useState(currentBlog.author)
+  const [image, setImage] = useState(currentBlog.image)
+  const [content, setContent] = useState(currentBlog.content)
+  const [key, setKey] = useState(currentBlog.key)
   const navigate = useNavigate()
 
   const validateFields = () => {
@@ -24,27 +26,35 @@ const CreateBlog = () => {
     return true
   }
 
-  const createBlog = () => {
+  const updateBlog = () => {
     const isValid = validateFields()
     if(!isValid){
       return
     }
-    const newBlog = {
-      id: blogs.length + 1,
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const month = new Date().getMonth()
+    const editBlog = {
+      id: currentBlog.id,
       title: title,
       author: author ? author : "Anonymous",
       image: image,
       content: content,
       key: key,
-      date: new Date().getUTCDate
+      date: `${new Date().getDate()} ${months[month - 1]},${new Date().getFullYear()} `
     }
-    blogsDispatch({type: "CREATE_BLOG", payload: {...newBlog}})
-    navigate("/")
+    blogsDispatch({type: "UPDATE_BLOG", payload: {...editBlog}})
+    navigate(`/blogs/${currentBlog.id}`)
+  }
+
+  const deleteBlog = () => {
+    const confirmDelete = confirm("Are you sure you want to delete blog?")
+    if(confirmDelete)
+      blogsDispatch({type: "DELETE_BLOG", payload: {currentBlog}})
   }
 
   return (
-    <div className="createBlog">
-      <h1>Create a Blog</h1>
+    <div className="editBlog">
+      <h1>Edit Blog</h1>
       <div className="inputFields">
         <div id="title">
           <h2>Blog Title*</h2>
@@ -60,16 +70,17 @@ const CreateBlog = () => {
         </div>
         <div id="key">
           <h2>Secret Key</h2>
-          <input value={key} onChange={(e) => {setKey(e.target.value)}} type="text" placeholder="Make editing private"/>
+          <input value={key} onChange={(e) => {setKey(e.target.value)}} type="text" placeholder="Leave empty to allow for contribution "/>
         </div>
         <div id="body">
           <h2>Blog Content*</h2>
           <textarea value={content} onChange={(e) => {setContent(e.target.value)}} placeholder="Some content to post"></textarea>
         </div>
-        <Button id="button" text="Create" onClickFunc={createBlog}/>
+        <Button id="save" text="Save" onClickFunc={updateBlog}/>
+        <Button id="delete" text="Delete" onClickFunc={deleteBlog}/>
       </div>
     </div>
   )
 }
 
-export default CreateBlog
+export default EditBlog

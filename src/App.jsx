@@ -5,6 +5,7 @@ import Blogs from './pages/Blogs'
 import Blog from './pages/Blog'
 import CreateBlog from './pages/CreateBlog'
 import Header from './components/Header'
+import EditBlog from './pages/EditBlog'
 
 const Layout = () => {
   return (
@@ -23,7 +24,8 @@ function App() {
       <Route path='/' element={<Layout/>}>
         <Route index element={<Blogs/>}/>
         <Route path='createBlog' element={<CreateBlog/>}/>
-        <Route path='blog' element={<Blog/>}/>
+        <Route path='/blogs/:blogId' element={<Blog/>}/>
+        <Route path='/editBlog/:blogId' element={<EditBlog/>}/>
       </Route>
     </Routes>
   )
