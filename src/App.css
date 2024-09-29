@@ -109,7 +109,7 @@ footer{
     .blog_content{
       position: relative;
       h2{
-        font-size: 2em;
+        font-size: 1.3em;
         font-weight: 500;
         display: -webkit-box;        
         -webkit-box-orient: vertical;
@@ -122,17 +122,17 @@ footer{
         font-weight: 400;
       }
       h3{
-        font-size: 1.2em;
+        font-size: 1em;
         color: #000d;
         
         display: -webkit-box;        
         -webkit-box-orient: vertical;
         overflow: hidden;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
       }
       h4{
-        font-size: 1.1em;
+        font-size: 0.9em;
         color: #000a;
         position: absolute;
         bottom: 0;
@@ -185,7 +185,7 @@ footer{
     gap: 3px;
     background-color: white;
     h2{
-      font-size: 1.3em;
+      font-size: 1.2em;
       font-weight: 300;
       margin-top: 5px;
     }
@@ -269,7 +269,12 @@ footer{
     margin: 15px 0;
     p{
       font-size: 1.2em;
+      text-align: justify;
     }
+  }
+  #subTitle{
+    margin-top: 30px;
+    font-size: 1.6em;
   }
   .more_blogs{
     overflow-y: scroll;
@@ -305,7 +310,7 @@ footer{
         z-index: 5;
         width: 100%;
         h2{
-          font-size: 1.2em;
+          font-size: 1.1em;
           padding: 0 5px;
           display: -webkit-box;        
           -webkit-box-orient: vertical;
@@ -318,6 +323,7 @@ footer{
           color: #000a;
           font-variant: small-caps;
           padding: 0 5px;
+          font-size: 1em;
           display: -webkit-box;        
           -webkit-box-orient: vertical;
           overflow: hidden;
@@ -349,7 +355,7 @@ footer{
     gap: 3px;
     background-color: white;
     h2{
-      font-size: 1.3em;
+      font-size: 1.2em;
       font-weight: 300;
       margin-top: 5px;
     }

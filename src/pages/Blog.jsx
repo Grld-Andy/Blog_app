@@ -49,7 +49,7 @@ const Blog = () => {
           <h2>{currentBlog.author.toUpperCase()}</h2>
           <h3>{currentBlog.date}</h3>
         </div>
-        <h1>Read More Blogs</h1>
+        <h1 id="subTitle">Read More Blogs</h1>
         <div className="more_blogs">
           {
             blogs.map((blog, index) => (

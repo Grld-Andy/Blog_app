@@ -69,7 +69,7 @@ const EditBlog = () => {
         </div>
         <div id="key">
           <h2>Secret Key</h2>
-          <input value={key} onChange={(e) => {setKey(e.target.value)}} type="text" placeholder="Leave empty to allow for contribution "/>
+          <input value={key} onChange={(e) => {setKey(e.target.value)}} type="text" placeholder="Make editing private"/>
         </div>
         <div id="body">
           <h2>Blog Content*</h2>
